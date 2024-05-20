@@ -7,7 +7,7 @@
         src: /home/lenovo/IdeaProjects/SPE_MAJOR/kubernetes-config/chat-backend-secret.yaml
         dest: /var/tmp/ansible/chat-backend-secret.yaml
     - name: apply secret
-      shell: kubectl apply -f /home/lenovo/IdeaProjects/SPE_MAJOR/kubernetes-config/chat-backend-secret.yaml
+      shell: kubectl apply -f /var/tmp/ansible/chat-backend-secret.yaml
 
       # - name: apply backend
     #   shell: >
