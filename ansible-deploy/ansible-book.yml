@@ -1,0 +1,18 @@
+---
+- name: Deploy chat app to minikube
+  hosts: all
+  tasks:
+    - name: apply secret
+      shell: kubectl apply -f ../kubernetes-config/chat-backend-secret.yaml
+
+    - name: apply backend
+      shell: kubectl apply -f ../kubernetes-config/chat-backend.yaml
+
+    - name: apply frontend-configmap
+      shell: kubectl apply -f ../kubernetes-config/chat-frontend-configmap.yaml
+
+    - name: apply frontend
+      shell: kubectl apply -f ../kubernetes-config/chat-frontend.yaml
+
+    - name: apply ingress
+      shell: kubectl apply -f ../kubernetes-config/chat-ingress.yaml

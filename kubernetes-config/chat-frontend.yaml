@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chat-frontend-deployment
+  labels:
+    app: chat-frontend
+spec:
+  selector:
+    matchLabels:
+      app: chat-frontend
+  template:
+    metadata:
+      labels:
+        app: chat-frontend
+    spec:
+      containers:
+        - name: chat-frontend
+          image: rushi4350/chat-frontend:frontend
+          ports:
+            - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: chat-frontend-service
+
+spec:
+  type: LoadBalancer
+  selector:
+    app: chat-frontend
+  ports:
+    - name: http
+      port: 3000
+      targetPort: 3000
+      nodePort: 31432
+    - name: http2
+      port: 8081 # Same port as the first mapping
+      targetPort: 3000 # Same target port as the container
+      nodePort: 31433 # New nodePort for the second node

@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: chat-frontend-configmap
+data:
+  REACT_APP_FRONTEND_URL: chat-frontend-service
+  REACT_APP_BACKEND_URL: chat-backend-service
