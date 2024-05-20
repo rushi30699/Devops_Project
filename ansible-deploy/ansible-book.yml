@@ -8,20 +8,12 @@
     #     warn: false
     - name: apply backend
       shell: kubectl apply -f ../kubernetes-config/chat-backend.yaml --validate=false
-      args:
-        warn: false
 
     - name: apply frontend-configmap
       shell: kubectl apply -f ../kubernetes-config/chat-frontend-configmap.yaml --validate=false
-      args:
-        warn: false
 
     - name: apply frontend
       shell: kubectl apply -f ../kubernetes-config/chat-frontend.yaml --validate=false
-      args:
-        warn: false
 
     - name: apply ingress
       shell: kubectl apply -f ../kubernetes-config/chat-ingress.yaml --validate=false
-      args:
-        warn: false
