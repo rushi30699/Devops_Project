@@ -2,6 +2,7 @@
 - name: Deploy chat app to minikube
   hosts: all
   vars:
+    ansible_python_interpreter: /usr/bin/python3
     k8s_manifest_dir: "../kubernetes-config"
     k8s_namespace: "default" # Replace with your desired namespace
   tasks:
