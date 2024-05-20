@@ -4,22 +4,22 @@
   tasks:
     - name: apply secret
       shell: >
-        kubectl apply -f ../kubernetes-config/chat-backend-secret.yaml
+        kubectl apply -f /../kubernetes-config/chat-backend-secret.yaml
         --validate=false
 
     - name: apply backend
       shell: >
-        kubectl apply -f ../kubernetes-config/chat-backend.yaml
+        kubectl apply -f /../kubernetes-config/chat-backend.yaml
         --validate=false
 
     - name: apply frontend-configmap
       shell: >
-        kubectl apply -f ../kubernetes-config/chat-frontend-configmap.yaml
+        kubectl apply -f /../kubernetes-config/chat-frontend-configmap.yaml
         --validate=false
 
     - name: apply frontend
       shell: >
-        kubectl apply -f ../kubernetes-config/chat-frontend.yaml
+        kubectl apply -f /../kubernetes-config/chat-frontend.yaml
         --validate=false
 
     - name: apply ingress
