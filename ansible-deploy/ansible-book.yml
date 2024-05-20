@@ -1,26 +1,50 @@
 ---
 - name: Deploy chat app to minikube
   hosts: localhost
+  vars:
+    k8s_manifest_dir: "../kubernetes-config"
+    k8s_namespace: "default" # Replace with your desired namespace
   tasks:
-    - name: apply secret
-      shell: kubectl apply -f ../kubernetes-config/chat-backend-secret.yaml
+    - name: Create or Update Kubernetes Secret
+      kubernetes.core.k8s:
+        state: present
+        src: "{{ k8s_manifest_dir }}/chat-backend-secret.yaml"
+        namespace: "{{ k8s_namespace }}"
 
-      # - name: apply backend
-    #   shell: >
-    #     kubectl apply -f ../kubernetes-config/chat-backend.yaml
-    #     --validate=false
+    # - name: Create or Update Backend Deployment
+    #   kubernetes.core.k8s:
+    #     state: present
+    #     src: "{{ k8s_manifest_dir }}/chat-backend.yaml"
+    #     namespace: "{{ k8s_namespace }}"
 
-    # - name: apply frontend-configmap
-    #   shell: >
-    #     kubectl apply -f ../kubernetes-config/chat-frontend-configmap.yaml
-    #     --validate=false
+    # - name: Create or Update Frontend Deployment
+    #   kubernetes.core.k8s:
+    #     state: present
+    #     src: "{{ k8s_manifest_dir }}/chat-frontend.yaml"
+    #     namespace: "{{ k8s_namespace }}"
+# ---
+# - name: Deploy chat app to minikube
+#   hosts: localhost
+#   tasks:
+#     - name: apply secret
+#       shell: kubectl apply -f ../kubernetes-config/chat-backend-secret.yaml
 
-    # - name: apply frontend
-    #   shell: >
-    #     kubectl apply -f ../kubernetes-config/chat-frontend.yaml
-    #     --validate=false
+# - name: apply backend
+#   shell: >
+#     kubectl apply -f ../kubernetes-config/chat-backend.yaml
+#     --validate=false
 
-    # - name: apply ingress
-    #   shell: >
-    #     kubectl apply -f ../kubernetes-config/chat-ingress.yaml
-    #     --validate=false
+# - name: apply frontend-configmap
+#   shell: >
+#     kubectl apply -f ../kubernetes-config/chat-frontend-configmap.yaml
+#     --validate=false
+
+# - name: apply frontend
+#   shell: >
+#     kubectl apply -f ../kubernetes-config/chat-frontend.yaml
+#     --validate=false
+
+# - name: apply ingress
+#   shell: >
+#     kubectl apply -f ../kubernetes-config/chat-ingress.yaml
+#     --validate=false
