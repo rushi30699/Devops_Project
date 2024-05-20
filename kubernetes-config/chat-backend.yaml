@@ -1,7 +1,8 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: chat-backend-deployment
+  - name: chat-backend-deployment
 spec:
   replicas: 1
   selector:
