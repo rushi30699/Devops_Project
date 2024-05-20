@@ -2,10 +2,9 @@
 - name: Deploy chat app to minikube
   hosts: localhost
   tasks:
-    # - name: apply secret
-    #   shell: kubectl apply -f ../kubernetes-config/chat-backend-secret.yaml --validate=false
-    #   args:
-    #     warn: false
+    - name: apply secret
+      shell: kubectl apply -f ../kubernetes-config/chat-backend-secret.yaml --validate=false
+
     - name: apply backend
       shell: kubectl apply -f ../kubernetes-config/chat-backend.yaml --validate=false
 
