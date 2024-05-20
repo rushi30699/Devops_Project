@@ -5,9 +5,11 @@
     ansible_python_interpreter: /usr/bin/python3
     k8s_manifest_dir: "../kubernetes-config"
     k8s_namespace: "default" # Replace with your desired namespace
+
   tasks:
     - name: Create or Update Kubernetes Secret
       kubernetes.core.k8s:
+        kubeconfig: /home/lenovo/.kube/config
         state: present
         src: "{{ k8s_manifest_dir }}/chat-backend-secret.yaml"
         namespace: "{{ k8s_namespace }}"
