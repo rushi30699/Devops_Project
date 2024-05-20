@@ -12,6 +12,7 @@
         state: present
         src: "{{ k8s_manifest_dir }}/chat-backend-secret.yaml"
         namespace: "{{ k8s_namespace }}"
+        kubeconfig: ~/.kube/config
 
     # - name: Create or Update Backend Deployment
     #   kubernetes.core.k8s:
