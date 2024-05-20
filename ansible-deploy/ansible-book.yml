@@ -9,7 +9,6 @@
   tasks:
     - name: Create or Update Kubernetes Secret
       kubernetes.core.k8s:
-        kubeconfig: /home/lenovo/.kube/config
         state: present
         src: "{{ k8s_manifest_dir }}/chat-backend-secret.yaml"
         namespace: "{{ k8s_namespace }}"
