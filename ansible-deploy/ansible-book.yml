@@ -3,16 +3,26 @@
   hosts: localhost
   tasks:
     - name: apply secret
-      shell: kubectl apply -f ../kubernetes-config/chat-backend-secret.yaml --validate=false
+      shell: >
+        kubectl apply -f ../kubernetes-config/chat-backend-secret.yaml
+        --validate=false
 
     - name: apply backend
-      shell: kubectl apply -f ../kubernetes-config/chat-backend.yaml --validate=false
+      shell: >
+        kubectl apply -f ../kubernetes-config/chat-backend.yaml
+        --validate=false
 
     - name: apply frontend-configmap
-      shell: kubectl apply -f ../kubernetes-config/chat-frontend-configmap.yaml --validate=false
+      shell: >
+        kubectl apply -f ../kubernetes-config/chat-frontend-configmap.yaml
+        --validate=false
 
     - name: apply frontend
-      shell: kubectl apply -f ../kubernetes-config/chat-frontend.yaml --validate=false
+      shell: >
+        kubectl apply -f ../kubernetes-config/chat-frontend.yaml
+        --validate=false
 
     - name: apply ingress
-      shell: kubectl apply -f ../kubernetes-config/chat-ingress.yaml --validate=false
+      shell: >
+        kubectl apply -f ../kubernetes-config/chat-ingress.yaml
+        --validate=false
