@@ -30,7 +30,7 @@
   hosts: localhost
   tasks:
     - name: apply secret
-      shell: kubectl apply -f ../kubernetes-config/chat-backend-secret.yaml
+      shell: kubectl apply --validate=false -f ../kubernetes-config/chat-backend-secret.yaml
 # - name: apply backend
 #   shell: >
 #     kubectl apply -f ../kubernetes-config/chat-backend.yaml
