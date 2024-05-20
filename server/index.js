@@ -33,20 +33,22 @@ const server = app.listen(PORT, () => {
 const io = new Server(server, {
   cors: {
     origins: [
-      "http://localhost:3000",
-      "http://localhost:3001",
-      "http://localhost:3002",
-      "http://localhost:3003",
-      "http://localhost:3004"
+      "http://192.168.49.2:31432/",
+      // "http://localhost:3001",
+      // "http://localhost:3002",
+      // "http://localhost:3003",
+      // "http://localhost:3004",
     ],
     credentials: true,
   },
 });
 
-
-io.use(VerifySocketToken);
-
 global.onlineUsers = new Map();
+
+io.use((socket, next) => {
+  // Update socket.io middleware usage
+  VerifySocketToken(socket, next); // Use VerifySocketToken middleware
+});
 
 const getKey = (map, val) => {
   for (let [key, value] of map.entries()) {
