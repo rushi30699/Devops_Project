@@ -4,10 +4,10 @@
   tasks:
     - name: apply secret
       shell: >
-        kubectl apply -f /home/lenovo/IdeaProjects/SPE_MAJOR/kubernetes-config/chat-backend-secret.yaml 
+        sudo kubectl apply -f /home/lenovo/IdeaProjects/SPE_MAJOR/kubernetes-config/chat-backend-secret.yaml 
         --validate=false
 
-    # - name: apply backend
+      # - name: apply backend
     #   shell: >
     #     kubectl apply -f ../kubernetes-config/chat-backend.yaml
     #     --validate=false
