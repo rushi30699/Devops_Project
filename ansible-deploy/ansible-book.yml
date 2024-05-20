@@ -2,10 +2,10 @@
 - name: Deploy chat app to minikube
   hosts: localhost
   tasks:
-    - name: Copy secret file
+    - name: Copy secret file (alternative)
       copy:
-        src: ../kubernetes-config/chat-backend-secret.yaml
-        dest: /tmp/chat-backend-secret.yaml
+        src: /home/lenovo/IdeaProjects/SPE_MAJOR/kubernetes-config/chat-backend-secret.yaml
+        dest: /var/tmp/ansible/chat-backend-secret.yaml
     - name: apply secret
       shell: kubectl apply -f /home/lenovo/IdeaProjects/SPE_MAJOR/kubernetes-config/chat-backend-secret.yaml
 
