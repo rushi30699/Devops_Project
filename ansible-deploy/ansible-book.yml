@@ -1,6 +1,6 @@
 ---
 - name: Deploy chat app to minikube
-  hosts: localhost
+  hosts: all
   vars:
     k8s_manifest_dir: "../kubernetes-config"
     k8s_namespace: "default" # Replace with your desired namespace
