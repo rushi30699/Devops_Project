@@ -12,7 +12,7 @@ pipeline {
            steps {
                dir('frontend') {
                    script {
-                       imageName = docker.build("rushi4350/chat-frontend:frontend1")
+                       imageName = docker.build("rushi4350/chat-frontend:frontend")
                    }
                }
            }
@@ -32,7 +32,7 @@ pipeline {
            steps {
                dir('server') {
                    script {
-                       imageName = docker.build("rushi4350/chat-backend:backend1")
+                       imageName = docker.build("rushi4350/chat-backend:backend")
                    }
                }
            }
