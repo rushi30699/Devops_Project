@@ -48,13 +48,13 @@
 #     src: "{{ k8s_manifest_dir }}/chat-frontend.yaml"
 #     namespace: "{{ k8s_namespace }}"
 # ---
-- name: Deploy chat app to minikube
-  hosts: localhost
-  tasks:
-    - name: apply secret
-      shell: >-
-        kubectl apply --validate=false -f
-        ../kubernetes-config/chat-backend-secret.yaml
+# - name: Deploy chat app to minikube
+#   hosts: localhost
+#   tasks:
+#     - name: apply secret
+#       shell: >-
+#         kubectl apply --validate=false -f
+#         ../kubernetes-config/chat-backend-secret.yaml
 
 # - name: apply backend
 #   shell: >
