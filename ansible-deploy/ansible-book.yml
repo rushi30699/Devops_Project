@@ -53,7 +53,7 @@
   tasks:
     - name: apply secret
       shell: >-
-        kubectl apply --validate=false -f
+        kubectl apply -f
         ../kubernetes-config/chat-backend-secret.yaml
 
 # - name: apply backend
