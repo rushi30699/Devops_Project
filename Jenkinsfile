@@ -42,10 +42,21 @@ pipeline {
                 }
             }
         }
+        stage('Copy Configuration Files') {
+            steps {
+                script {
+                    def sourceDir = "/home/lenovo/IdeaProjects/SPE_MAJOR/kubernetes-config"
+                    def targetDir = "${WORKSPACE}/kubernetes-config"
+                    sh "mkdir -p ${targetDir}"
+                    sh "cp ${sourceDir}/* ${targetDir}/"
+                }
+            }
+        }
+
         stage('Deploy with Kubectl') {
             steps {
                 sh """
-                    kubectl apply -f ../kubernetes-config/chat-backend-secret.yaml
+                    kubectl apply -f ${WORKSPACE}/kubernetes-config/chat-backend-secret.yaml
                     # Add any other commands you want to execute here
                 """
             }
