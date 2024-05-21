@@ -1,5 +1,24 @@
+---
 - name: Deploy chat app to minikube
-  hosts: localhost
+  hosts: all
   tasks:
-    - name: delete previous secret
-      shell: kubectl delete -f ../kubernetes-config/chat-backend-secret.yaml
+    - name: apply secret
+      shell: kubectl apply -f ../kubernetes-config/chat-backend-secret.yaml
+
+    - name: apply backend
+      shell: kubectl apply -f ../kubernetes-config/chat-backend.yaml
+
+    - name: apply frontend
+      shell: kubectl apply -f ../kubernetes-config/chat-frontend.yaml
+
+    # - name: apply elasticsearch
+    #   shell: kubectl apply -f ../kubernetes-config/elasticsearch.yaml
+
+    # - name: apply logstash
+    #   shell: kubectl apply -f ../kubernetes-config/logstash.yaml
+
+    # - name: apply kibana
+    #   shell: kubectl apply -f ../kubernetes-config/kibana.yaml
+
+    # - name: apply filebeat
+    #   shell: kubectl apply -f ../kubernetes-config/filebeat.yaml

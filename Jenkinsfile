@@ -42,23 +42,13 @@ pipeline {
                 }
             }
         }
-        stage('Copy Configuration Files') {
+
+        stage('Deploy with Ansible') {
             steps {
                 script {
-                    def sourceDir = "/home/lenovo/IdeaProjects/SPE_MAJOR/kubernetes-config"
-                    def targetDir = "${WORKSPACE}/kubernetes-config"
-                    sh "mkdir -p ${targetDir}"
-                    sh "cp ${sourceDir}/* ${targetDir}/"
+                    ansiblePlaybook becomeUser: null, colorized: true, disableHostKeyChecking: true, installation: 'Ansible', inventory: 'ansible-deploy/inventory',
+                    playbook: 'ansible-deploy/ansible-book.yml', sudoUser: null
                 }
-            }
-        }
-
-        stage('Deploy with Kubectl') {
-            steps {
-                sh """
-                    kubectl apply -f ${WORKSPACE}/kubernetes-config/chat-backend-secret.yaml
-                    # Add any other commands you want to execute here
-                """
             }
         }
     }
