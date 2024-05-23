@@ -1,0 +1,19 @@
+# logstash-configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: logstash-config
+  namespace: elk
+data:
+  logstash.conf: |
+    input {
+      tcp {
+        port => 5044
+        codec => "json"
+      }
+    }
+    output {
+      elasticsearch {
+        hosts => ["http://elasticsearch:9200"]
+      }
+    }
