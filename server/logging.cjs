@@ -1,5 +1,5 @@
-import winston from "winston/lib/winston/config";
-// import winston from "../node_modules/winston";
+// import winston from "winston/lib/winston/config";
+import winston from "../node_modules/winston";
 const path = require("path");
 
 const logPath = path.join(__dirname, "logs", "app.log");
