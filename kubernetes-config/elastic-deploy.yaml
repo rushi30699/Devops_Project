@@ -1,38 +1,65 @@
-# elasticsearch-deployment.yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: default
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: elasticsearch
-  namespace: elk
   labels:
-    app: elasticsearch
+    node.type: es-node-master
+  name: es
+  namespace: default
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: elasticsearch
+      node.type: es-node-master
   template:
     metadata:
       labels:
-        app: elasticsearch
+        node.type: es-node-master
     spec:
       containers:
-        - name: elasticsearch
-          image: docker.elastic.co/elasticsearch/elasticsearch:7.10.0
-          ports:
-            - containerPort: 9200
+        - name: es-node-master-container
           env:
             - name: discovery.type
               value: single-node
+          image: docker.elastic.co/elasticsearch/elasticsearch:7.16.2
+          readinessProbe:
+            exec:
+              command:
+                - curl
+                - localhost:9200/_cluster/health
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          livenessProbe:
+            exec:
+              command:
+                - curl
+                - localhost:9200/_cluster/health
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          ports:
+            - containerPort: 9200
+            - containerPort: 9300
+
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: elasticsearch
-  namespace: elk
+  labels:
+    es.service: es-master-service
+  name: es-master-service
+  namespace: default
 spec:
-  selector:
-    app: elasticsearch
+  type: NodePort
   ports:
-    - port: 9200
+    - name: "9200"
+      port: 9200
       targetPort: 9200
+    - name: "9300"
+      port: 9300
+      targetPort: 9300
+  selector:
+    node.type: es-node-master
