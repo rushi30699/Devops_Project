@@ -1,5 +1,6 @@
 pipeline {
     agent any
+
     stages {
         stage('Git Pull') {
             steps {
@@ -28,7 +29,7 @@ pipeline {
             steps {
                 dir('server') {
                     script {
-                        imageName = docker.build("rushi4350/chat-backend:backend")
+                        imageName = docker.build("rushi4350/chat-backend:backend2")
                     }
                 }
             }
@@ -42,14 +43,9 @@ pipeline {
                 }
             }
         }
-
-        stage('Deploy with Ansible') {
-            steps {
-                script {
-                    ansiblePlaybook becomeUser: null, colorized: true, disableHostKeyChecking: true, installation: 'Ansible', inventory: 'ansible-deploy/inventory',
-                    playbook: 'ansible-deploy/ansible-book.yml', sudoUser: null
-                }
-            }
+        
+        stage('Ansible Pull Docker Image') {
+            steps {sh 'ansible-playbook -i localhost, --connection=local /home/lenovo/IdeaProjects/SPE_MAJOR/ansible-deploy/ansible-book.yml'}
         }
-    }
+    }   
 }

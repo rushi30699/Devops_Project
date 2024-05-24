@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "dev": "nodemon server/index.js",
     "start": "nodemon server/index.js"
   },
@@ -20,5 +20,11 @@
     "mongoose": "^6.5.3",
     "socket.io": "^4.5.1",
     "winston": "^3.13.0"
+  },
+  "devDependencies": {
+    "@babel/plugin-syntax-import-attributes": "^7.24.6",
+    "@babel/preset-env": "^7.16.4",
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0"
   }
 }

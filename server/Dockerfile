@@ -1,7 +1,7 @@
 # Use the base image with Node.js 20.8.1 installed
 FROM node:20.8.1-alpine
 
-# Set the working directory to /backend
+# Set the working directory to /server
 WORKDIR /server
 
 # Copy the package.json and package-lock.json files to the container
@@ -13,8 +13,11 @@ RUN npm install --save-dev nodemon
 # Copy the rest of the backend code to the container
 COPY . .
 
+# Ensure the test folder is copied to the container
+COPY test ./test
+
 # Run tests during the build process
-# RUN npm test
+RUN npm test
 
 # Expose the port that the application will run on
 EXPOSE 8090
