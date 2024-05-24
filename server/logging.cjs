@@ -1,5 +1,5 @@
-import winston from "winston";
-import path from "path";
+const winston = require("winston");
+const path = require("path");
 
 const logPath = path.join(__dirname, "logs", "app.log");
 
@@ -9,4 +9,4 @@ const logger = winston.createLogger({
   transports: [new winston.transports.File({ filename: "logs/server.log" })],
 });
 
-export default logger;
+module.exports = logger;
