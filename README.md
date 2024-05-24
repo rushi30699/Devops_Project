@@ -1,86 +1,65 @@
-# Real-Time Chat Application 🚀
+# Let's Chat
 
-## Team Members
+A real-time chat application. Another fun side project :)
 
-- Rushi Kothari (MT2023064) 👨‍💻
-- Aman Pandey (MT2023171) 👨‍💻
+![Screenshot from 2022-09-07 16-27-25](https://user-images.githubusercontent.com/66206865/188901222-8eefabe5-8ca2-4305-aeb3-3afa37b304b3.png)
 
-## Description
+![Screenshot from 2022-09-07 17-11-16](https://user-images.githubusercontent.com/66206865/188900580-01d0d3ca-b242-4f48-99cf-96edeeb5f1db.png)
 
-Our project proposal aims to create a user-friendly platform that enables communication and interaction among its users. 💬
+GIFs are attached at the end.
 
-- Through the registration and login process, users will have access to personalized profiles, where they can update their avatar and display names to reflect their identity accurately. 👤
-- Using the DiceBear API, our platform will offer the option to generate random avatars, adding a touch of uniqueness to each user's profile. 🎲
-- One of the core features of our platform includes the ability for users to create chat rooms, facilitating dynamic conversations with others in real-time. 💬
-- To enhance user experience, we'll implement an online status indicator, ensuring users can easily idenatify when others are available for communication. 🟢
-- Additionally, our platform will feature a robust search functionality, allowing users to find specific chats or individuals within the platform. 🔍
-- We'll integrate an emoji picker, enabling users to express themselves creatively during conversations. 😀
-- For users who prefer a darker interface, our platform will offer a sleek dark mode option, catering to diverse preferences and enhancing accessibility. 🌙
-- Through these features, our project aims to provide a comprehensive and engaging platform for users to connect, communicate, and collaborate. 🌐
+## Technologies Used
 
-## Technology Stack
+- React and TailwindCSS for the frontend
+- Firebase for authentication
+- Node/Express for creating API endpoints
+- MongoDB for storing chat room members and their messages
+- Socket.io for making the app real-time
 
-- **Frontend**: React and TailwindCSS ⚛️
-- **Authentication**: Firebase 🔥
-- **Backend**: Node/Express for creating API endpoints 🚀
-- **Database**: MongoDB for storing chat room members and their messages 📂
-- **Real-time Communication**: Socket.io 🔌
+## Basic Features
 
-## DevOps Pipeline
+- Users can register/login via email and password.
+- Profile page where users can update their avatar and display name.
+- Generate random avatars using [DiceBear API](https://avatars.dicebear.com/docs/http-api)
+- Users can create a room to chat with others.
+- Users can see online status.
+- Search functionality.
+- Chatting is real-time.
+- Emoji picker is also integrated.
+- Dark mode can be enabled.
 
-- **Version Control System (VCS)**: Git 🌳
-- **Containerization**: Docker 🐳
-- **Continuous Integration and Continuous Deployment (CI/CD)**: Jenkins ⚙️
-- **Configuration Management**: Ansible 📜
-- **Container Orchestration**: Kubernetes 🎻
-- **Monitoring and Logging**: ELK (Elasticsearch, Logstash, Kibana) stack 📈
+## Getting Started
 
-## Steps to Run the Project
+To run this project locally, follow these steps:
 
-1. **Clone the Repository**
+1. Clone the repository.
+2. Install the dependencies:
+   - Navigate to the `frontend` directory and run `npm install`.
+   - Navigate to the `server` directory and run `npm install`.
+3. Set up Firebase:
+   - Go to the [Firebase Console](https://console.firebase.google.com/).
+   - Create a new project or select an existing one.
+   - Go to the project settings or service accounts section.
+   - Click on "Generate new private key" or a similar option.
+   - Save the downloaded JSON file as `serviceAccountKey.json`.
+   - Place the downloaded `serviceAccountKey.json` file in the `server/config` directory.
+4. Set up Environment Variables:
+   - In the `frontend` directory, create a new file named `.env` based on the `.env.example` file.
+   - Update the values of the environment variables in the `.env` file with your Firebase configuration details.
+   - In the root directory, create a new file named `.env` based on the `.env.example` file.
+   - Update the values of the environment variables in the `.env` file according to your preferences. For example, set the `PORT` variable to specify the desired port for the server and set `MONGO_URI` to your MongoDB connection URI.
+5. Run the server:
+   - Navigate to the `server` directory and run `npm run start`.
+6. Run the client:
+   - Navigate to the `frontend` directory and run `npm start`.
+7. The application will be accessible at `http://localhost:3000`.
 
-```
-git clone https://github.com/your-username/real-time-chat-application.git
-```
+Please make sure to keep the `serviceAccountKey.json` file and sensitive information secure and not commit them to version control.
 
-2. **Install Dependencies**
+## GIFs
 
-```
-cd real-time-chat-application
-npm install
-```
+![chrome-capture-2022-8-7](https://user-images.githubusercontent.com/66206865/188901119-65a05b65-3c76-4c3f-92c5-042d061df8e1.gif)
 
-3. **Set up Environment Variables**
+![chrome-capture-2022-8-7 (1)](https://user-images.githubusercontent.com/66206865/188900841-2dfe91c2-eb78-4f70-a013-babe0124ee68.gif)
 
-Create a `.env` file in the root directory and add the following environment variables:
-
-```
-FIREBASE_API_KEY=your-firebase-api-key
-FIREBASE_AUTH_DOMAIN=your-firebase-auth-domain
-FIREBASE_PROJECT_ID=your-firebase-project-id
-MONGODB_URI=your-mongodb-uri
-```
-
-4. **Start the Development Server**
-
-```
-npm start
-```
-
-5. **Build the Production Bundle**
-
-```
-npm run build
-```
-
-6. **Deploy to Production**
-
-The project is set up with a DevOps pipeline using Jenkins, Ansible, and Kubernetes. Follow the deployment process specific to your infrastructure.
-
-## Contributing
-
-Contributions are welcome! Please follow the guidelines in the [CONTRIBUTING.md](CONTRIBUTING.md) file. 🤝
-
-## License
-
-This project is licensed under the [MIT License](LICENSE). ⚖️
+![chrome-capture-2022-8-7 (2)](https://user-images.githubusercontent.com/66206865/188900662-a120aef4-ced1-442b-98dd-ab90b4cea7b5.gif)
