@@ -1,5 +1,5 @@
 import auth from "../config/firebase-config.js";
-import logger from "../logging.js";
+import logger from "../logging.cjs";
 
 export const getAllUsers = async (req, res) => {
   const maxResults = 10;
