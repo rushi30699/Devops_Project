@@ -10,7 +10,7 @@ GIFs are attached at the end.
 
 ## Technologies Used
 
-- React and TailwindCSS for the frontend
+- React and TailwindCSS for the frontend.
 - Firebase for authentication
 - Node/Express for creating API endpoints
 - MongoDB for storing chat room members and their messages
